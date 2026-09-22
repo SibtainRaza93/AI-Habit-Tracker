@@ -1,11 +1,15 @@
 import express from "express"
 import "dotenv/config";
 import cors  from "cors";
-import { connectDB } from "./config/db";
-import { notFound, errorHandler } from "./middlewares/errorHandler";
+import { connectDB } from "./config/db.js";
+import { notFound, errorHandler } from "./middlewares/errorHandler.js";
+
+import dns from "node:dns";
 
 const app = express();
 const PORT = process.env.PORT || 8000;
+
+dns.setServers(["1.1.1.1", "8.8.8.8"]);
 
 const allowedOrigins = (process.env.CLIENT_URL || "")
 .split(",")
@@ -30,7 +34,7 @@ const corsOptions = {
 };
 
 app.use(cors(corsOptions));
-app.options("*", cors(corsOptions));
+app.options(/.*/,cors(corsOptions));
 app.use(express.json({limit: "1mb"}));
 
 app.get("/api/health", (req, res) =>{
