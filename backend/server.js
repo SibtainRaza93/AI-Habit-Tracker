@@ -5,7 +5,7 @@ import { connectDB } from "./config/db";
 import { notFound, errorHandler } from "./middlewares/errorHandler";
 
 const app = express();
-const PORT = 8000;
+const PORT = process.env.PORT || 8000;
 
 const allowedOrigins = (process.env.CLIENT_URL || "")
 .split(",")
@@ -32,3 +32,17 @@ const corsOptions = {
 app.use(cors(corsOptions));
 app.options("*", cors(corsOptions));
 app.use(express.json({limit: "1mb"}));
+
+app.get("/api/health", (req, res) =>{
+    res.json({status:"ok", time: new Date().toISOString() });
+});
+
+app.use(notFound);
+app.use(errorHandler);
+
+
+connectDB().then(() =>{
+    app.listen(PORT, ()=>{
+        console.log(`Server running on https://localhost:${PORT}`);
+    });
+});
