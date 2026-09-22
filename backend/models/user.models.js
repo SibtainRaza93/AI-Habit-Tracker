@@ -34,19 +34,18 @@ const userSchema = new mongoose.Schema({
 //pre check 
 
 //kisi bhi user docu ko save karne se pahle ye chalta hai 
-userSchema.pre("save", async function (next) {
+userSchema.pre("save", async function () {
     if(!this.isModified("password")) return next();
     const salt = await bcrypt.genSalt(10);
     this.password = await bcrypt.hash(this.password, salt);
-    next();
 })
 
 
-userSchema.method.matchPassword = function (plain){
+userSchema.methods.matchPassword = function (plain){
     return bcrypt.compare(plain, this.password);
 }
 
-userSchema.method.toJSON = function (){
+userSchema.methods.toJSON = function (){
     const obj = this.toObject();
     delete obj.password;
     return obj;

@@ -1,7 +1,8 @@
-import express from "express"
 import "dotenv/config";
+import express from "express"
 import cors  from "cors";
 import { connectDB } from "./config/db.js";
+import authRoutes from "./routes/auth.routes.js"
 import { notFound, errorHandler } from "./middlewares/errorHandler.js";
 
 import dns from "node:dns";
@@ -40,6 +41,12 @@ app.use(express.json({limit: "1mb"}));
 app.get("/api/health", (req, res) =>{
     res.json({status:"ok", time: new Date().toISOString() });
 });
+// before not found 
+
+app.use("/api/auth", authRoutes);
+
+
+
 
 app.use(notFound);
 app.use(errorHandler);
