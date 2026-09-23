@@ -9,9 +9,9 @@ const todayKey = () => format(new Date(), "yyyy-MM-dd");
 
 export const mockUser = {
   _id: "u_alex",
-  name: "Alex Rivera",
-  email: "alex@example.com",
-  avatar: "A",
+  name: "Raza",
+  email: "raza@example.com",
+  avatar: "R",
   morningMotivation: true,
 };
 
