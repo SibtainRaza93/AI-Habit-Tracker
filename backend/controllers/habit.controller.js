@@ -42,18 +42,18 @@ export const createHabit = async (req, res) => {
         });
         res.status(201).json(habit);
     } catch (err) {
-        res.status(500).json({message: err.message});
+        res.status(500).json({ message: err.message });
     };
 };
 
-export const updateHabit = async (req, res)=>{
+export const updateHabit = async (req, res) => {
     try {
         const habit = await Habit.findOne({
             _id: req.params.id,
             userId: req.user._id,
         });
 
-        if(!habit) return res.status(404).json({message: "Habit not found"});
+        if (!habit) return res.status(404).json({ message: "Habit not found" });
 
         const fields = [
             "name",
@@ -65,30 +65,65 @@ export const updateHabit = async (req, res)=>{
             "icon",
             "order",
         ];
-        for(const f of fields){
-            if(req.body[f] !== undefined) habit[f] = req.body[f];
+        for (const f of fields) {
+            if (req.body[f] !== undefined) habit[f] = req.body[f];
         };
         await habit.save();
         res.json(habit);
 
     } catch (err) {
-        res.status(500).json({message: err.message});
+        res.status(500).json({ message: err.message });
     };
 };
 
 //Delete habits functions below
 
-export const deleteHabit = async (treq, res)=>{
+export const deleteHabit = async (treq, res) => {
     try {
         const habit = await Habit.findOneAndDelete({
             _id: req.params.id,
             userId: res.user._id,
         });
-        
-        if(!habit) return res.status(404).json({message: "Habit is not found"});
-        await HabitLog.deleteMany({ habitId: habit._id, userId: req.user._id});
-        res.json({message: "Habit Deleted"});
+
+        if (!habit) return res.status(404).json({ message: "Habit is not found" });
+        await HabitLog.deleteMany({ habitId: habit._id, userId: req.user._id });
+        res.json({ message: "Habit Deleted" });
     } catch (err) {
-        res.status(500).json({message: err.message});
+        res.status(500).json({ message: err.message });
+    }
+}
+
+export const archiveHabit = async (req, res) => {
+    try {
+        const habit = await Habit.findOne({
+            _id: req.params.id,
+            userId: res.user._id,
+        });
+        if (!habit) return res.status(404).json({ message: "Habit is not found" });
+        habit.isArchived = !habit.isArchived;
+        await habit.save();
+        res.json(habit);
+    } catch (err) {
+        res.status(500).json({ message: err.message });
+    }
+};
+
+export const reorderHabits = async (req, res) => {
+    try {
+        const { order } = req.body;
+
+        if (!Array.isArray(order)) return res.status(400).json({ message: "order must be an array" });
+
+        await Promise.all(
+            order.map((id, idx) =>
+                Habit.upadateOne(
+                    { _id: id, userId: req.user._id },
+                    { $set: { order: idx } }
+                )
+            )
+        );
+        res.json({ message: { Reordered } });
+    } catch (err) {
+        res.status(500).json({ message: err.message});
     }
 }
