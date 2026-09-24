@@ -1,4 +1,4 @@
-import mongose from "mongoose";
+import mongoose from "mongoose";
 
 
 const CATEGORIES = [
@@ -44,4 +44,4 @@ const habitSchema = new mongoose.Schema(
 );
 
 export const HABIT_CATEGORIES = CATEGORIES;
-export default mongose.model("Habit", habitSchema);
+export default mongoose.model("Habit", habitSchema);
