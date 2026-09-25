@@ -2,8 +2,9 @@ import "dotenv/config";
 import express from "express"
 import cors  from "cors";
 import { connectDB } from "./config/db.js";
-import authRoutes from "./routes/auth.routes.js"
-import habitRoutes from "./routes/habits.routes.js"
+import authRoutes from "./routes/auth.routes.js";
+import habitRoutes from "./routes/habits.routes.js";
+import logRoutes from "./routes/log.routes.js"
 import { notFound, errorHandler } from "./middlewares/errorHandler.js";
 
 import dns from "node:dns";
@@ -46,6 +47,7 @@ app.get("/api/health", (req, res) =>{
 
 app.use("/api/auth", authRoutes);
 app.use("/api/habits", habitRoutes);
+app.use("/api/logs", logRoutes);
 
 app.use(notFound);
 app.use(errorHandler);
