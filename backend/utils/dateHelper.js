@@ -2,7 +2,7 @@ import {format, subDays, startOfWeek, endOfWeek, eachDayOfInterval} from "date-f
 
 export const toDateKey = (date) => format(date, "yyyy-MM-dd");
 
-export const todayKey = () => toDateKey(new date());
+export const todayKey = () => toDateKey(new Date());
 
 // last 90 days ka 
 

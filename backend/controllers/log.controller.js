@@ -13,6 +13,8 @@ import {
 export const markComplete = async (req, res) => {
   try {
     const { habitId, date } = req.body;
+
+    
     const completedDate = date || todayKey();
     const habit = await Habit.findOne({
       _id: habitId,
