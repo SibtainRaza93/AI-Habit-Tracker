@@ -1,4 +1,4 @@
-import {GoogleGenAi} from "@google/genai";
+import {GoogleGenAI } from "@google/genai";
 
 
 // return client instant
@@ -8,27 +8,27 @@ const getClient = ()=>{
     if(client)  return client;
     const key = process.env.GEMINI_API_KEY;
     if(!key) return null;
-    client = new GoogleGenAi({ apiKey: key });
+    client = new GoogleGenAI ({ apiKey: key });
     return client; 
 };
 
 
-const MODEL = process.env.GEMINI_MODEL || "gemini-2.5-flash";
+const MODEL = process.env.GEMINI_MODEL || "gemini-3.8-flash";
 
 export const isAIEnabled = () => !!process.env.GEMINI_API_KEY;
 
-export const perseJSON = (text) =>{
+export const parseJSON = (text) =>{
     let cleaned = (text || "").trim();
-    if(cleaned.startWith("```json")){
+    if(cleaned.startsWith("```json")){
         cleaned = cleaned.replace(/```json\n?/g, "").replace(/```\n?$/g, "");
     }
-    else if(cleaned.startWith("```")) {
+    else if(cleaned.startsWith("```")) { // FIX: startWith -> startsWith
         cleaned = cleaned.replace(/```\n?/g, "");
     }
     return JSON.parse(cleaned.trim());
 };
 
-export const changeCompletion = async ({system, user, temperature}) =>{
+export const chatCompletion = async ({system, user, temperature}) =>{ // FIX: renamed changeCompletion -> chatCompletion to match calls in controller
     const c = getClient();
 
     if(!c){

@@ -2,32 +2,7 @@ import Habit from "../models/habit.models.js";
 import HabitLog from "../models/habitLog.models.js";
 import AIInsight from "../models/Allinsight.models.js";
 import { lastNDays, calcStreak, todayKey } from "../utils/dateHelper.js";
-
-// const buildWeekContext = async (userId) => {
-//     const habits = await Habit.find({ userId, isArchived: false });
-//     const days = lastNDays(7);
-//     const logs = await HabitLog.find({
-//         userId,
-//         completedDate: {
-//             $gte: days[0], $lte: days[days.length - 1]
-//         },
-//     });
-
-//     const perHabit = habits.map((h) => {
-//         const completed = logs.filter((l) => {
-//             String(l.habitId) === String(h._id)
-//         }).length;
-//         return {
-//             name: h.name,
-//             category: h.category,
-//             frequency: h.frequency,
-//             completedDays: completed,
-//             targetDays: h.targetDays,
-
-//         };
-//     });
-//     return { days, perHabit };
-// }
+import { chatCompletion, SYSTEM_PROMPTS } from "../utils/aiService.js"; // FIX: added missing import (update path to match your actual file location)
 
 const buildWeekContext = async (userId) => {
   const habits = await Habit.find({
@@ -85,7 +60,7 @@ ${ctx.perHabit
 Please write the personalised weekly report now.`;
 
         const { content } = await chatCompletion({
-            system: SYSTEM_REPORT.weekly,
+            system: SYSTEM_PROMPTS.weekly, // FIX: SYSTEM_REPORT (undefined) -> SYSTEM_PROMPTS
             user: userMsg,
         });
 
@@ -104,7 +79,6 @@ Please write the personalised weekly report now.`;
 export const suggestHabits = async (req, res) => {
   try {
     const { goals, productiveTime, struggles } = req.body;
-    // (inferred - text cut off in screenshot)
     const userMsg = `User goals: ${goals || "not provided"}\nMost productive time: ${productiveTime || "not provided"}\nPast struggles: ${struggles || "not provided"}\n\nSuggest 3 personalised habits now. return JSON only`;
     const { content } = await chatCompletion({
       system: SYSTEM_PROMPTS.suggestion,
@@ -228,6 +202,7 @@ export const chatAnalysis = async (req, res) => {
     const { content } = await chatCompletion({
       system: SYSTEM_PROMPTS.chat,
       user: userMsg,
+      temperature: 0,
     });
     await AIInsight.create({
       userId: req.user._id,
@@ -277,8 +252,7 @@ export const morningMotivation = async (req, res) => {
     const done = todayLogs.length;
     const total = habits.length;
 
-    const userMsg = `Today's habits and streaks:\n${ctx}\n\nDone today: ${done}/${total}. Write the morning motivation message now.`; // (inferred — text cut off past screenshot edge)
-
+    const userMsg = `Today's habits and streaks:\n${ctx}\n\nDone today: ${done}/${total}. Write the morning motivation message now.`; 
     const { content } = await chatCompletion({
       system: SYSTEM_PROMPTS.morning,
       user: userMsg,
