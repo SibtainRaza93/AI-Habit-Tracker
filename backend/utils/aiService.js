@@ -28,6 +28,33 @@ export const perseJSON = (text) =>{
     return JSON.parse(cleaned.trim());
 };
 
+export const changeCompletion = async ({system, user, temperature}) =>{
+    const c = getClient();
+
+    if(!c){
+        return {
+            ok: false,
+            content:
+            "AI features are disabled - set GEMINI_API_KEY in the backend .env to enable real AI response."
+        };
+    }
+
+    try {
+        const res = await c.models.generateContent({
+            model: MODEL,
+            contents: user,
+            config:{
+                systemInstruction: system,
+                temperature,
+            },
+        });
+        return { ok: true, content: (res.text || "").trim()};
+    } catch (err) {
+        console.error("AI error:", err.message);
+        return { ok: false, content: "AI request failed. please try again later."}
+    }
+};
+
 export const SYSTEM_PROMPTS = {
     weekly:
     "You are a warm, encouraging habit coach. Analyse the user's last 7 days of habit data and write a short personalised report (120-180 words). Mention: what went well, what they struggled with, patterns noticed, and one specific piece of encouragement. Use the user's actual habit names. Be human, not generic. No markdown headers - use plain prose with line breaks. ",
