@@ -1,16 +1,32 @@
-# React + Vite
+# 🔥 Habit Tracker — AI-Powered Habit Building App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A full-stack, end-to-end habit tracking application with a beautiful glassmorphism UI, streak tracking, GitHub-style heatmaps, and a suite of **Google Gemini–powered AI features** that act as your personal habit coach.
 
-Currently, two official plugins are available:
+> Build habits that stick — with data, delight, and an AI coach in your corner.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+---
 
-## React Compiler
+## 📑 Table of Contents
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- [Overview](#-overview)
+- [Features](#-features)
+- [Tech Stack](#-tech-stack)
+- [Screenshots](#-screenshots)
+- [Project Structure](#-project-structure)
+- [Getting Started](#-getting-started)
+- [Environment Variables](#-environment-variables)
+- [API Overview](#-api-overview)
+- [AI Features in Detail](#-ai-features-in-detail)
+- [Security](#-security)
+- [Deployment](#-deployment)
+- [Roadmap](#-roadmap)
+- [Contributing](#-contributing)
+- [License](#-license)
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🌟 Overview
+
+Habit Tracker helps users create, track, and analyse daily habits. It combines a delightful check-off experience (confetti, progress rings) with meaningful analytics (streaks, heatmaps, charts) and AI-driven coaching (weekly reports, habit suggestions, streak recovery plans, chat-based analysis, and morning motivation).
+
+
