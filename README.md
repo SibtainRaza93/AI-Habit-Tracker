@@ -121,7 +121,7 @@ The application uses **Google Gemini** to analyse real habit data and provide pe
        │   Auth     │   │ + Mongoose │   │     API      │
        └────────────┘   └────────────┘   └──────────────┘
 
-
+```
 ## 🖼 Screenshots
 
 ### Dashboard
