@@ -101,15 +101,15 @@ The application uses **Google Gemini** to analyse real habit data and provide pe
 
 ```text
                     ┌─────────────────────┐
-                    │   React + Vite      │
-                    │     Frontend        │
+                    │    React + Vite     │
+                    │      Frontend       │
                     └──────────┬──────────┘
                                │
                                │ REST API
                                ▼
                     ┌─────────────────────┐
-                    │ Node.js + Express   │
-                    │      Backend        │
+                    │  Node.js + Express  │
+                    │       Backend       │
                     └──────────┬──────────┘
                                │
               ┌────────────────┼────────────────┐
@@ -121,121 +121,114 @@ The application uses **Google Gemini** to analyse real habit data and provide pe
        └────────────┘   └────────────┘   └──────────────┘
 
 
-## 🖼 Screenshots
 
-### Dashboard
+🖼 Screenshots
+🏠 Dashboard
 
-![Dashboard](./screenshots/dashboard.png)
-### AllHabits
+📋 All Habits
 
-![Dashboard](./screenshots/allHabit.png)
+📊 AI Weekly Report
 
-### Weekly Grid
+📈 Insights
 
-![Weekly Grid](./screenshots/report.png)
+💬 AI Chatbot
 
-### Insights
+📉 Statistics
 
-![Insights](./screenshots/insights.png)
+📊 Statistics View
 
-### ChatBot
+🖼 Additional Screenshot
 
-![Insights](./screenshots/chatbot.png)
-
-### Statistics
-
-![Statistics](./screenshots/statistics.png)
-
-📁 Project Structure
 
 AI-Habit-Tracker/
+│
 ├── backend/
 │   ├── config/
 │   │   └── db.js
+│   │
 │   ├── controllers/
 │   │   ├── ai.controller.js
 │   │   ├── auth.controller.js
 │   │   ├── habit.controller.js
 │   │   └── log.controller.js
+│   │
 │   ├── middlewares/
 │   │   ├── auth.middleware.js
 │   │   └── errorHandler.js
+│   │
 │   ├── models/
 │   │   ├── Allinsight.models.js
 │   │   ├── habit.models.js
 │   │   ├── habitLog.models.js
 │   │   └── user.models.js
+│   │
 │   ├── routes/
 │   │   ├── ai.routes.js
 │   │   ├── auth.routes.js
 │   │   ├── habits.routes.js
 │   │   └── log.routes.js
+│   │
 │   ├── scripts/
+│   │
 │   ├── utils/
 │   │   ├── aiService.js
 │   │   └── dateHelper.js
+│   │
 │   ├── .env.example
 │   ├── package.json
 │   └── server.js
 │
 ├── frontend/
-│   ├── public/
-│   ├── src/
-│   │   ├── api/
-│   │   │   └── axios.js
-│   │   ├── assets/
-│   │   ├── components/
-│   │   │   ├── AIChat.jsx
-│   │   │   ├── AIWeeklyReport.jsx
-│   │   │   ├── AppLayout.jsx
-│   │   │   ├── CategoryPieChart.jsx
-│   │   │   ├── HabitForm.jsx
-│   │   │   ├── HabitStatsCard.jsx
-│   │   │   ├── HabitSuggestionModal.jsx
-│   │   │   ├── HeatmapChart.jsx
-│   │   │   ├── LoadingSpinner.jsx
-│   │   │   ├── Markdown.jsx
-│   │   │   ├── MobileNav.jsx
-│   │   │   ├── Modal.jsx
-│   │   │   ├── MonthlyBarChart.jsx
-│   │   │   ├── MorningMotivation.jsx
-│   │   │   ├── OrbitingHabits.jsx
-│   │   │   ├── ProgressRing.jsx
-│   │   │   ├── ProtectedRoute.jsx
-│   │   │   ├── Sidebar.jsx
-│   │   │   ├── StreakRecoveryCard.jsx
-│   │   │   ├── SummaryCards.jsx
-│   │   │   ├── TodayHabitCard.jsx
-│   │   │   ├── WeeklyBarChart.jsx
-│   │   │   └── WeeklyGrid.jsx
-│   │   ├── context/
-│   │   ├── pages/
-│   │   ├── utils/
-│   │   ├── App.jsx
-│   │   ├── index.css
-│   │   └── main.jsx
-│   ├── .env.example
-│   ├── eslint.config.js
-│   ├── index.html
-│   ├── postcss.config.js
-│   ├── package.json
-│   └── vite.config.js
+│   └── ai-habit-tracker-ui-boilerplate-code/
+│       ├── public/
+│       ├── src/
+│       │   ├── api/
+│       │   │   └── axios.js
+│       │   ├── assets/
+│       │   ├── components/
+│       │   ├── context/
+│       │   ├── pages/
+│       │   ├── utils/
+│       │   ├── App.jsx
+│       │   ├── index.css
+│       │   └── main.jsx
+│       │
+│       ├── .env.example
+│       ├── eslint.config.js
+│       ├── index.html
+│       ├── postcss.config.js
+│       ├── package.json
+│       └── vite.config.js
 │
 ├── screenshots/
+│   ├── allHabit.png
+│   ├── chatbot.png
 │   ├── dashboard.png
-│   ├── weekly-grid.png
+│   ├── image.png
 │   ├── insights.png
+│   ├── report.png
 │   ├── statistics.png
-│   ├── dark-mode.png
-│   └── mobile.png
+│   └── viewStatic.png
 │
 ├── .gitignore
+├── LICENSE
 └── README.md
 
 Feature → Component Map
 
 
-![alt text](image.png)
+| Feature                         | Key Components                                          |
+| ------------------------------- | ------------------------------------------------------- |
+| Daily tracking & progress rings | `TodayHabitCard`, `ProgressRing`, `SummaryCards`        |
+| 90-day heatmap                  | `HeatmapChart`                                          |
+| Weekly grid                     | `WeeklyGrid`, `WeeklyBarChart`                          |
+| Insights & statistics           | `CategoryPieChart`, `MonthlyBarChart`, `HabitStatsCard` |
+| AI weekly report                | `AIWeeklyReport`, `Markdown`                            |
+| AI habit suggestions            | `HabitSuggestionModal`                                  |
+| AI streak recovery              | `StreakRecoveryCard`                                    |
+| AI chat                         | `AIChat`                                                |
+| AI morning motivation           | `MorningMotivation`                                     |
+| Layout & navigation             | `AppLayout`, `Sidebar`, `MobileNav`, `ProtectedRoute`   |
 
 
 🚀 Getting Started
@@ -245,21 +238,23 @@ npm or yarn
 MongoDB local instance or MongoDB Atlas
 Google Gemini API key
 1. Clone the Repository
-git clone https://github.com/SibtainRaza93/AI-Habit-Tracker
+git clone https://github.com/SibtainRaza93/AI-Habit-Tracker.git
 cd AI-Habit-Tracker
 2. Install Dependencies
 Backend
 cd backend
 npm install
 Frontend
-cd ../frontend
+cd ../frontend/ai-habit-tracker-ui-boilerplate-code
 npm install
 3. Configure Environment Variables
 
 Create .env files using the provided .env.example files.
 
-cp backend/.env.example backend/.env
-cp frontend/.env.example frontend/.env
+Backend
+backend/.env
+Frontend
+frontend/ai-habit-tracker-ui-boilerplate-code/.env
 4. Run the Application
 
 Open two terminals.
@@ -268,7 +263,7 @@ Terminal 1 — Backend
 cd backend
 npm run dev
 Terminal 2 — Frontend
-cd frontend
+cd frontend/ai-habit-tracker-ui-boilerplate-code
 npm run dev
 
 The frontend runs on:
@@ -278,30 +273,50 @@ http://localhost:5173
 The backend API runs on:
 
 http://localhost:8000
-
 🔑 Environment Variables
-backend/.env
-PORT=8000
-MONGO_URI=  mongo db url from mongo db atlas
-JWT_SECRET=kjsnfk
-JWT_EXPIRES_IN=7d
-GEMINI_API_KEY= Your gemini key
-GEMINI_MODEL=gemini-2.5-flash
-CLIENT_URL=http://localhost:5173
+Backend
 
-frontend/.env
+Create:
+
+backend/.env
+
+Example:
+
+PORT=8000
+
+MONGO_URI=your_mongodb_atlas_connection_string
+
+JWT_SECRET=your_secret_key
+JWT_EXPIRES_IN=7d
+
+GEMINI_API_KEY=your_gemini_api_key
+GEMINI_MODEL=gemini-2.5-flash
+
+CLIENT_URL=http://localhost:5173
+Frontend
+
+Create:
+
+frontend/ai-habit-tracker-ui-boilerplate-code/.env
+
+Example:
 
 VITE_API_URL=http://localhost:8000/api
 
-Authentication:-
+🔒 Never commit .env files to GitHub. Make sure they are included in .gitignore.
+
+
+API Overview
+Authentication
+
 | Method | Endpoint           | Description              |
 | ------ | ------------------ | ------------------------ |
 | POST   | `/api/auth/signup` | Register a new user      |
 | POST   | `/api/auth/login`  | Log in and receive a JWT |
 | GET    | `/api/auth/me`     | Get current user profile |
 
+Habits
 
-Habits:-
 | Method | Endpoint                  | Description                  |
 | ------ | ------------------------- | ---------------------------- |
 | GET    | `/api/habits`             | List all habits              |
@@ -311,7 +326,7 @@ Habits:-
 | DELETE | `/api/habits/:id`         | Delete a habit               |
 | POST   | `/api/habits/:id/toggle`  | Check or uncheck a habit     |
 
-Logs & Statistics:-
+Logs & Statistics
 | Method | Endpoint              | Description                   |
 | ------ | --------------------- | ----------------------------- |
 | GET    | `/api/stats/streaks`  | Current and longest streaks   |
@@ -319,7 +334,7 @@ Logs & Statistics:-
 | GET    | `/api/stats/weekly`   | Weekly habit data             |
 | GET    | `/api/stats/insights` | Habit and category statistics |
 
-AI:-
+AI
 
 | Method | Endpoint                     | Description                             |
 | ------ | ---------------------------- | --------------------------------------- |
@@ -360,11 +375,9 @@ Users can ask natural-language questions about their habit data.
 
 Examples:
 
-Which habit am I most consistent with?
-
-What day of the week do I usually skip?
-
-Which habit has improved the most?
+"Which habit am I most consistent with?"
+"What day of the week do I usually skip?"
+"Which habit has improved the most?"
 ☀️ AI Morning Motivation
 
 Generates a daily motivational message using the user's actual habits and current streak information.
@@ -377,14 +390,13 @@ JWT secrets and Gemini API keys are stored in environment variables
 Gemini API requests are handled server-side
 .env files are excluded from version control
 
-Deployment:-
 
+☁️ Deployment
 | Part     | Suggested Platforms     |
 | -------- | ----------------------- |
 | Frontend | Vercel, Netlify         |
 | Backend  | Render, Railway, Fly.io |
 | Database | MongoDB Atlas           |
-
 
 🗺 Roadmap
  Push / email reminders
@@ -392,7 +404,6 @@ Deployment:-
  Data export (CSV / PDF)
  PWA / offline support
  Achievements & badges
-
 
  🤝 Contributing
 
@@ -406,18 +417,6 @@ git commit -m "Add amazing feature"
 Push the branch:
 git push origin feature/amazing-feature
 Open a Pull Request
-
-
-AI-Habit-Tracker/
-├── screenshots/
-│   ├── dashboard.png
-│   ├── weekly-grid.png
-│   ├── insights.png
-│   ├── statistics.png
-│   ├── dark-mode.png
-│   └── mobile.png
-└── README.md
-
 
 👤 Author
 
