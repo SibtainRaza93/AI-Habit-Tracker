@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # 🔥 Habit Tracker — AI-Powered Habit Building App
 
 A full-stack, end-to-end habit tracking application with a beautiful glassmorphism UI, streak tracking, GitHub-style heatmaps, and a suite of **Google Gemini-powered AI features** that act as your personal habit coach.
@@ -427,3 +428,6 @@ GitHub: @SibtainRaza93
 LinkedIn: Sibtain Raza
 
 <p align="center"> ⭐ If you found this project useful, please give it a star! ⭐ </p>
+=======
+
+>>>>>>> 2bbd1c26bca82b75c9ca675be2f36221a892af02
