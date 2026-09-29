@@ -147,96 +147,110 @@ The application uses **Google Gemini** to analyse real habit data and provide pe
 
 ![Statistics](./screenshots/statistics.png)
 
-📁 Project Structure
+## 📁 Project Structure
 
+```text
 AI-Habit-Tracker/
+│
 ├── backend/
 │   ├── config/
 │   │   └── db.js
+│   │
 │   ├── controllers/
 │   │   ├── ai.controller.js
 │   │   ├── auth.controller.js
 │   │   ├── habit.controller.js
 │   │   └── log.controller.js
+│   │
 │   ├── middlewares/
 │   │   ├── auth.middleware.js
 │   │   └── errorHandler.js
+│   │
 │   ├── models/
 │   │   ├── Allinsight.models.js
 │   │   ├── habit.models.js
 │   │   ├── habitLog.models.js
 │   │   └── user.models.js
+│   │
 │   ├── routes/
 │   │   ├── ai.routes.js
 │   │   ├── auth.routes.js
 │   │   ├── habits.routes.js
 │   │   └── log.routes.js
+│   │
 │   ├── scripts/
+│   │
 │   ├── utils/
 │   │   ├── aiService.js
 │   │   └── dateHelper.js
+│   │
 │   ├── .env.example
 │   ├── package.json
 │   └── server.js
 │
 ├── frontend/
-│   ├── public/
-│   ├── src/
-│   │   ├── api/
-│   │   │   └── axios.js
-│   │   ├── assets/
-│   │   ├── components/
-│   │   │   ├── AIChat.jsx
-│   │   │   ├── AIWeeklyReport.jsx
-│   │   │   ├── AppLayout.jsx
-│   │   │   ├── CategoryPieChart.jsx
-│   │   │   ├── HabitForm.jsx
-│   │   │   ├── HabitStatsCard.jsx
-│   │   │   ├── HabitSuggestionModal.jsx
-│   │   │   ├── HeatmapChart.jsx
-│   │   │   ├── LoadingSpinner.jsx
-│   │   │   ├── Markdown.jsx
-│   │   │   ├── MobileNav.jsx
-│   │   │   ├── Modal.jsx
-│   │   │   ├── MonthlyBarChart.jsx
-│   │   │   ├── MorningMotivation.jsx
-│   │   │   ├── OrbitingHabits.jsx
-│   │   │   ├── ProgressRing.jsx
-│   │   │   ├── ProtectedRoute.jsx
-│   │   │   ├── Sidebar.jsx
-│   │   │   ├── StreakRecoveryCard.jsx
-│   │   │   ├── SummaryCards.jsx
-│   │   │   ├── TodayHabitCard.jsx
-│   │   │   ├── WeeklyBarChart.jsx
-│   │   │   └── WeeklyGrid.jsx
-│   │   ├── context/
-│   │   ├── pages/
-│   │   ├── utils/
-│   │   ├── App.jsx
-│   │   ├── index.css
-│   │   └── main.jsx
-│   ├── .env.example
-│   ├── eslint.config.js
-│   ├── index.html
-│   ├── postcss.config.js
-│   ├── package.json
-│   └── vite.config.js
+│   └── ai-habit-tracker-ui-boilerplate-code/
+│       ├── public/
+│       │
+│       ├── src/
+│       │   ├── api/
+│       │   │   └── axios.js
+│       │   │
+│       │   ├── assets/
+│       │   │
+│       │   ├── components/
+│       │   │   ├── AIChat.jsx
+│       │   │   ├── AIWeeklyReport.jsx
+│       │   │   ├── AppLayout.jsx
+│       │   │   ├── CategoryPieChart.jsx
+│       │   │   ├── HabitForm.jsx
+│       │   │   ├── HabitStatsCard.jsx
+│       │   │   ├── HabitSuggestionModal.jsx
+│       │   │   ├── HeatmapChart.jsx
+│       │   │   ├── LoadingSpinner.jsx
+│       │   │   ├── Markdown.jsx
+│       │   │   ├── MobileNav.jsx
+│       │   │   ├── Modal.jsx
+│       │   │   ├── MonthlyBarChart.jsx
+│       │   │   ├── MorningMotivation.jsx
+│       │   │   ├── OrbitingHabits.jsx
+│       │   │   ├── ProgressRing.jsx
+│       │   │   ├── ProtectedRoute.jsx
+│       │   │   ├── Sidebar.jsx
+│       │   │   ├── StreakRecoveryCard.jsx
+│       │   │   ├── SummaryCards.jsx
+│       │   │   ├── TodayHabitCard.jsx
+│       │   │   ├── WeeklyBarChart.jsx
+│       │   │   └── WeeklyGrid.jsx
+│       │   │
+│       │   ├── context/
+│       │   ├── pages/
+│       │   ├── utils/
+│       │   ├── App.jsx
+│       │   ├── index.css
+│       │   └── main.jsx
+│       │
+│       ├── .env.example
+│       ├── eslint.config.js
+│       ├── index.html
+│       ├── postcss.config.js
+│       ├── package.json
+│       └── vite.config.js
 │
 ├── screenshots/
+│   ├── allHabit.png
+│   ├── chatbot.png
 │   ├── dashboard.png
-│   ├── weekly-grid.png
+│   ├── image.png
 │   ├── insights.png
+│   ├── report.png
 │   ├── statistics.png
-│   ├── dark-mode.png
-│   └── mobile.png
+│   └── viewStatic.png
 │
 ├── .gitignore
+├── LICENSE
 └── README.md
-
-Feature → Component Map
-
-
-![alt text](image.png)
+```
 
 
 🚀 Getting Started
