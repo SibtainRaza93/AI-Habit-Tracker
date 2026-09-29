@@ -120,7 +120,7 @@ The application uses **Google Gemini** to analyse real habit data and provide pe
        │   Auth     │   │ + Mongoose │   │     API      │
        └────────────┘   └────────────┘   └──────────────┘
 
-
+```
 
 🖼 Screenshots
 🏠 Dashboard
@@ -426,3 +426,5 @@ GitHub: @SibtainRaza93
 LinkedIn: Sibtain Raza
 
 <p align="center"> ⭐ If you found this project useful, please give it a star! ⭐ </p>
+
+
