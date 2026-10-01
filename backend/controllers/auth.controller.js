@@ -30,8 +30,9 @@ export const register = async (req, res) => {
       password,
       avatar: name.charAt(0).toUpperCase(),
     });
-    const token = signToken(user._id);
-    res.status(201).json({ user, token });
+    res.status(201).json({ message: "Registration successful. Please login." });
+    // const token = signToken(user._id);
+    // res.status(201).json({ user, token });
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
@@ -69,6 +70,22 @@ export const updateProfile = async (req, res) => {
     }
     if (morningMotivation !== undefined)
       user.morningMotivation = morningMotivation;
+    await user.save();
+    res.json({ user });
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+};
+
+//Email Remider
+export const updateReminderSettings = async (req, res) => {
+  try {
+    const { reminderEnabled, reminderTime } = req.body;
+    const user = await User.findById(req.user._id);
+
+    if (reminderEnabled !== undefined) user.reminderEnabled = reminderEnabled;
+    if (reminderTime !== undefined) user.reminderTime = reminderTime;
+
     await user.save();
     res.json({ user });
   } catch (err) {

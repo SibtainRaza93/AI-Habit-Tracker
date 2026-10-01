@@ -31,11 +31,11 @@ const userSchema = new mongoose.Schema({
     // reminder settings
     reminderEnabled: {
         type: Boolean,
-        default: false,
+        default: true,
     },
     reminderTime: {
         type: String,       // "HH:mm" format, 24-hour, e.g. "20:00"
-        default: "20:00",
+        default: "21:00",
     }
 }, 
 {timestamps: true});
@@ -44,7 +44,7 @@ const userSchema = new mongoose.Schema({
 
 //kisi bhi user docu ko save karne se pahle ye chalta hai 
 userSchema.pre("save", async function () {
-    if(!this.isModified("password")) return next();
+    if(!this.isModified("password")) return;
     const salt = await bcrypt.genSalt(10);
     this.password = await bcrypt.hash(this.password, salt);
 })

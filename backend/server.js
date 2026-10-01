@@ -7,6 +7,7 @@ import habitRoutes from "./routes/habits.routes.js";
 import logRoutes from "./routes/log.routes.js";
 import aiRoutes from "./routes/ai.routes.js"
 import { notFound, errorHandler } from "./middlewares/errorHandler.js";
+import "./scripts/reminderJob.js";
 
 import dns from "node:dns";
 
