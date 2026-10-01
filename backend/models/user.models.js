@@ -26,7 +26,16 @@ const userSchema = new mongoose.Schema({
     morningMotivation: {
         type: Boolean,
         default: false,
+    },
 
+    // reminder settings
+    reminderEnabled: {
+        type: Boolean,
+        default: false,
+    },
+    reminderTime: {
+        type: String,       // "HH:mm" format, 24-hour, e.g. "20:00"
+        default: "20:00",
     }
 }, 
 {timestamps: true});
