@@ -120,6 +120,15 @@ html.dark {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+  color: var(--text);
+  background: var(--bg-base);
+} */
+
 html,
 body,
 #root {
@@ -127,6 +136,11 @@ body,
   margin: 0;
   color: var(--text);
   background: var(--bg-base);
+  /* CHANGED: poore page ko horizontally overflow hone se roka —
+     WeeklyGrid jaise components apne khud ke overflow-x-auto
+     wrapper ke through scroll karenge, pura page side-scroll nahi hoga */
+  overflow-x: hidden;
+  width: 100%;
 }
 
 /* Aurora mesh background — sits behind everything */
