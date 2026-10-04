@@ -384,6 +384,21 @@ Which habit has improved the most?
 
 Generates a daily motivational message using the user's actual habits and current streak information.
 
+
+## 📧 Email Reminders — How It Works
+
+Every user automatically gets **email reminders enabled by default** at signup (default time: **9:00 PM**), no setup required.
+
+**Logic:**
+1. A background job (`node-cron`) checks every minute whether any user's reminder time matches the current time.
+2. For that user, it fetches all active (non-archived) habits.
+3. It checks which of those habits have **not** been completed today (no log entry for today's date).
+4. If any habits are still pending, it sends **one email** listing just those habit names.
+5. If everything is already completed, **no email is sent** — avoiding unnecessary notifications.
+
+**Example:** If a user has "DSA" and "Water" habits, and hasn't checked off "DSA" by 9 PM, they receive an email reminding them specifically about "DSA" — not about habits already completed.
+
+Users can change their reminder time anytime from **Settings**.
 🔒 Security
 Passwords are hashed using bcrypt
 Authentication uses signed JWT tokens
